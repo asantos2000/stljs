@@ -60,7 +60,7 @@ class Stl.Image
 
     thenRenderToImage = (povFileName) =>
       povcmd = child_proc.spawn('povray',
-        ['-s', "-i/tmp/#{locals.fileName}.pov", "+FN",
+        ["-i/tmp/#{locals.fileName}.pov", "+FN",
          "+W#{options.width}", "+H#{options.height}",
          "-o#{options.dst}", "+Q9", "+AM1", "+A", "+UA"])
 
