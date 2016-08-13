@@ -39,7 +39,7 @@ aptitude install povray
 
 Sometimes, you want to convert an STL file into a PNG file. To do that, we can 
 
-````
+``` javascript
 stljs = require('stljs')
 
 stljs.imageify('rotate_extrude.stl', { width: 800, height: 600, dst: 'rotate_extrude.png' }, nulli, nulliProg)
@@ -53,7 +53,7 @@ console.log(err);
 function nulliProg(err,poli,name){
 console.log("done one poli");
 }
-````
+```
 
 The readFile takes two functions, a callback when the parsing is done, and an 
 optional progress callback, which gets called as each polygon is parsed.
