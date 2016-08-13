@@ -23,6 +23,10 @@ If you're on a mac, you can install it using homebrew.
 brew install povray
 ````
 
+```
+sudo port install povray
+```
+
 If you're using ubuntu, you can install it using aptitude
 
 ````
@@ -31,22 +35,6 @@ aptitude install povray
 
 ## Getting started
 
-You have an STL file that you want to read. Here's what you do:
-
-````
-stljs = require('stljs')
-
-stljs.readFile('teapot.stl'
-  , (err, solid, name) ->
-    # can now do stuff with solid
-  , (err, polygon, name) ->
-    # gets called on as each polygon is parsed
-)
-````
-
-The readFile takes two functions, a callback when the parsing is done, and an 
-optional progress callback, which gets called as each polygon is parsed.
-
 ## Converting STL to PNG
 
 Sometimes, you want to convert an STL file into a PNG file. To do that, we can 
@@ -54,13 +42,21 @@ Sometimes, you want to convert an STL file into a PNG file. To do that, we can
 ````
 stljs = require('stljs')
 
-stljs.imageify('teapot.stl', { width: 200, height: 100, dst: 'teapot.png' }
-  , (err, povOutput, name) ->
-    # done with converting the image
-  , (err, povPolygon, name) -> 
-    # called on each polygon is processed
-)
+stljs.imageify('rotate_extrude.stl', { width: 800, height: 600, dst: 'rotate_extrude.png' }, nulli, nulliProg)
+
+function nulli(err,pov,name){
+console.log("done");
+console.log(name);
+console.log(pov);
+console.log(err);
+}
+function nulliProg(err,poli,name){
+console.log("done one poli");
+}
 ````
+
+The readFile takes two functions, a callback when the parsing is done, and an 
+optional progress callback, which gets called as each polygon is parsed.
 
 NOTE: In order to use this feature, you need to have pov-ray installed on your system
 already. This can be installed separately through 'aptitude' on linux and 'brew'
